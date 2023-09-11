@@ -9,19 +9,20 @@ const endpoint = "http://localhost:5000/api/video";
 
 const App = () => {
   const [status, setStatus] = useState();
+  const [downloadDisabled, setDownloadDisabled] = useState(false)
   const download = async () => {
+    setDownloadDisabled(true)
     const res = await fetch(endpoint, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" }
     });
-    // const status = await res.json()
     setStatus(res.status);
-    console.log(status)
+    setDownloadDisabled(false)
   };
   return (
     <div className="App">
-      <Button onClick={download}>download</Button>
+      <Button onClick={download} disabled={downloadDisabled}>download</Button>
       {status === 200 ? <Video></Video>:null}
     </div>
   );
