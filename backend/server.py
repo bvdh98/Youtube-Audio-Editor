@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, make_response
-from flask import request
 from downloader import *
+from flask_cors import CORS
 
 # create the Flask app
 app = Flask(__name__)
+CORS(app)
 
 @app.post('/api/video')
 def query_example():

@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
@@ -12,12 +11,12 @@ const App = () => {
   const download = async () => {
     const res = await fetch(endpoint, {
       method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
+      mode: "cors",
+      headers: { "Content-Type": "application/json" }
     });
-    // const status = await res.json()
-    setData(res);
-    console.log(res);
+    const status = await res.json()
+    setData(status);
+    console.log(status);
   };
   return (
     <div className="App">
@@ -27,3 +26,4 @@ const App = () => {
 };
 
 export default App;
+
