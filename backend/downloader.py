@@ -1,17 +1,19 @@
 from pytube import YouTube
 from moviepy.editor import *
+import os
 
 # TODO:make video and audio same length
 # TODO:handle error when video is age restricted
 video_link = "https://www.youtube.com/watch?v=_3trjVGVP3k&t=194s"
 audio_link = "https://www.youtube.com/watch?v=iRA82xLsb_w"
-video_folder_path = "./backend/downloads/videos"
-audio_folder_path = "./backend/downloads/audio"
+video_folder_path = "./downloads/videos"
+audio_folder_path = "./downloads/audio"
 vid_title = ''
 audio_title = ''
 illegal_chars = ["<", ">", ":", "/", "\\", "|", "?", "*", "\"", "\'"]
 # TODO: make general download function
-
+# TODO: check if video and audio have already been downloaded
+# TODO: make faster
 
 def download_vid():
     video = YouTube(video_link)
@@ -51,7 +53,7 @@ def make_new_video():
     # adding external audio to video
     final_video = video.set_audio(audio)
     # Extracting final output video
-    final_video.write_videofile("./backend/final.mp4", threads=8, fps=24)
+    final_video.write_videofile("../frontend/src/assets/video/final.mp4", threads=8, fps=24)
 
 
 if __name__ == '__main__':

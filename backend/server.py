@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, make_response
+from flask import request
 from downloader import *
 from flask_cors import CORS
 
@@ -8,8 +9,7 @@ CORS(app)
 
 @app.post('/api/video')
 def query_example():
-    # make_new_video()
-    print("done")
+    make_new_video()
     return jsonify({'vid_link':'./'})
 
 if __name__ == '__main__':
