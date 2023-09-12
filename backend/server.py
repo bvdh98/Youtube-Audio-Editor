@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from downloader import *
 from flask_cors import CORS
 
@@ -9,7 +9,7 @@ CORS(app)
 @app.post('/api/video')
 def query_example():
     make_new_video()
-    return "Success", 200
+    return jsonify({"message":"success"}),200
 
 if __name__ == '__main__':
     # run app in debug mode on port 5000

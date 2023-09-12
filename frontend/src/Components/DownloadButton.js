@@ -6,13 +6,15 @@ const endpoint = "http://localhost:5000/api/video";
 const DownloadButton = ({ setStatus }) => {
   const [downloadDisabled, setDownloadDisabled] = useState(false);
   const download = async () => {
+    setStatus("loading");
     setDownloadDisabled(true);
     const res = await fetch(endpoint, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
     });
-    setStatus(res.status);
+    const resMessage = await res.json()
+    setStatus(resMessage.message);
     setDownloadDisabled(false);
   };
   return (
