@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import Video from "./Components/Video";
 import DownloadButton from "./Components/DownloadButton";
 //TODO:handle errors when video download fails

@@ -8,8 +8,12 @@ CORS(app)
 
 @app.post('/api/video')
 def query_example():
-    make_new_video()
-    return jsonify({"message":"success"}),200
+    try:
+        make_new_video()
+        return jsonify({"message":"success"}),200
+    except Exception as e:
+        print(e)
+        return jsonify({"message":"fail"}),500
 
 if __name__ == '__main__':
     # run app in debug mode on port 5000

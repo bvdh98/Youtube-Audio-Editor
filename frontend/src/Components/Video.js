@@ -12,7 +12,6 @@ const Video = ({ status }) => {
         setVideoSrc(video);
       }
     };
-
     fetchVideo();
   }, []);
   return (
@@ -23,6 +22,7 @@ const Video = ({ status }) => {
               <video src={videoSrc} controls width={800} />}
             {status === null && null}
             {status === "loading" && "loading..."}
+            {status === "fail" && "download failed"}
           </div>
         : null}
     </div>

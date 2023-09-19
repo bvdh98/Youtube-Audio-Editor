@@ -4,7 +4,7 @@ import os
 
 # TODO:make video and audio same length
 # TODO:handle error when video is age restricted
-video_link = "https://www.youtube.com/watch?v=_3trjVGVP3k&t=194s"
+video_link = "https://www.youtube.com/watch?v=3Sb5Ul0KKss&t=157s"
 audio_link = "https://www.youtube.com/watch?v=iRA82xLsb_w"
 video_folder_path = "./downloads/videos"
 audio_folder_path = "./downloads/audio"
@@ -16,16 +16,14 @@ illegal_chars = ["<", ">", ":", "/", "\\", "|", "?", "*", "\"", "\'"]
 # TODO: make faster
 
 def download_vid():
-    video = YouTube(video_link)
+    video = YouTube(video_link, use_oauth=True,
+        allow_oauth_cache=True)
     global vid_title
     vid_title = video.title + '.mp4'
     vid_title = "".join(
         [char if char not in illegal_chars else "" for char in vid_title])
     video = video.streams.get_highest_resolution()
-    try:
-        video.download(video_folder_path)
-    except Exception as e:
-        print(e)
+    video.download(video_folder_path)
     print("video was downloaded successfully")
 
 
@@ -36,10 +34,7 @@ def download_audio():
     audio_title = video.title + '.mp4'
     audio_title = "".join(
         [char if char not in illegal_chars else "" for char in audio_title])
-    try:
-        audio_clip.download(audio_folder_path)
-    except Exception as e:
-        print(e)
+    audio_clip.download(audio_folder_path)
     print("audio was downloaded successfully")
 
 
