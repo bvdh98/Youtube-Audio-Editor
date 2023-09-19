@@ -16,7 +16,7 @@ const SearchForm = () => {
         </Form.Label>
         <Form.Control placeholder="Video link" />
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={}>
+      <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>

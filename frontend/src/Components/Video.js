@@ -1,12 +1,30 @@
 import React from "react";
-import video from "../assets/video/final.mp4";
-//TODO:conditionally import the video
+import {useState, useEffect} from "react";
+import { loadVideo } from "../Functions";
+//TODO:disable cra error screen
+
 const Video = ({ status }) => {
+  const [videoSrc, setVideoSrc] = useState(null);
+  useEffect(() => {
+    const fetchVideo = async () => {
+      const video = await loadVideo();
+      if (video) {
+        setVideoSrc(video);
+      }
+    };
+
+    fetchVideo();
+  }, []);
   return (
     <div>
-      {status === "success" && <video src={video} controls width={800} />}
-      {status === null && null}
-      {status === "loading" && "loading..."}
+      {videoSrc
+        ? <div>
+            {status === "success" &&
+              <video src={videoSrc} controls width={800} />}
+            {status === null && null}
+            {status === "loading" && "loading..."}
+          </div>
+        : null}
     </div>
   );
 };
