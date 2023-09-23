@@ -1,17 +1,19 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { createContext, useState } from "react";
 import Video from "./Components/Video";
-import DownloadButton from "./Components/DownloadButton";
+import SearchForm from "./Components/SearchForm";
 //TODO:handle errors when video download fails
 //TODO:show loading during download
-
+export const statusContext = createContext(null);
 const App = () => {
   const [status, setStatus] = useState(null);
   return (
     <div className="App">
-      <DownloadButton setStatus={setStatus}></DownloadButton>
-      <Video status={status}></Video>
+      <statusContext.Provider value={{status,setStatus}}>
+        <SearchForm />
+        <Video/>
+      </statusContext.Provider>
     </div>
   );
 };

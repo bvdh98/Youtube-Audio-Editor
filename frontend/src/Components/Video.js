@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import {useState, useEffect} from "react";
 import { loadVideo } from "../Functions";
+import { statusContext } from "../App";
 //TODO:disable cra error screen
 
-const Video = ({ status }) => {
+const Video = () => {
+  const {status} = useContext(statusContext)
   const [videoSrc, setVideoSrc] = useState(null);
   useEffect(() => {
     const fetchVideo = async () => {
@@ -21,7 +23,7 @@ const Video = ({ status }) => {
             {status === "success" &&
               <video src={videoSrc} controls width={800} />}
             {status === null && null}
-            {status === "loading" && "loading..."}
+            {status === "downloading" && "downloading..."}
             {status === "fail" && "download failed"}
           </div>
         : null}

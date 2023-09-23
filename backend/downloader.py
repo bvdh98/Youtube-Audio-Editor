@@ -4,8 +4,8 @@ import os
 
 # TODO:make video and audio same length
 # TODO:handle error when video is age restricted
-video_link = "https://www.youtube.com/watch?v=3Sb5Ul0KKss&t=157s"
-audio_link = "https://www.youtube.com/watch?v=iRA82xLsb_w"
+#video_link = "https://www.youtube.com/watch?v=_3trjVGVP3k"
+#audio_link = "https://www.youtube.com/watch?v=iRA82xLsb_w"
 video_folder_path = "./downloads/videos"
 audio_folder_path = "./downloads/audio"
 vid_title = ''
@@ -15,8 +15,8 @@ illegal_chars = ["<", ">", ":", "/", "\\", "|", "?", "*", "\"", "\'"]
 # TODO: check if video and audio have already been downloaded
 # TODO: make faster
 
-def download_vid():
-    video = YouTube(video_link, use_oauth=True,
+def download_vid(vid_link):
+    video = YouTube(vid_link, use_oauth=True,
         allow_oauth_cache=True)
     global vid_title
     vid_title = video.title + '.mp4'
@@ -27,7 +27,7 @@ def download_vid():
     print("video was downloaded successfully")
 
 
-def download_audio():
+def download_audio(audio_link):
     video = YouTube(audio_link)
     audio_clip = video.streams.get_highest_resolution()
     global audio_title
@@ -38,9 +38,9 @@ def download_audio():
     print("audio was downloaded successfully")
 
 
-def make_new_video():
-    download_vid()
-    download_audio()
+def make_new_video(data):
+    download_vid(data.vidLink)
+    download_audio(data.audioLink)
     # Input audio file
     audio = AudioFileClip(f'{audio_folder_path}/{audio_title}')
     # Input video file

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, json
 from downloader import *
 from flask_cors import CORS
 
@@ -8,6 +8,7 @@ CORS(app)
 
 @app.post('/api/video')
 def query_example():
+    data = json.loads(request.data)
     try:
         make_new_video()
         return jsonify({"message":"success"}),200
