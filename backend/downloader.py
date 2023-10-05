@@ -4,8 +4,9 @@ import os
 
 # TODO:make video and audio same length
 # TODO:handle error when video is age restricted
-#video_link = "https://www.youtube.com/watch?v=_3trjVGVP3k"
-#audio_link = "https://www.youtube.com/watch?v=iRA82xLsb_w"
+# video_link = "https://www.youtube.com/watch?v=_3trjVGVP3k"
+# audio_link = "https://www.youtube.com/watch?v=iRA82xLsb_w"
+# TODO: handle error when assets/video folder isnt created yet
 video_folder_path = "./downloads/videos"
 audio_folder_path = "./downloads/audio"
 vid_title = ''
@@ -13,11 +14,12 @@ audio_title = ''
 illegal_chars = ["<", ">", ":", "/", "\\", "|", "?", "*", "\"", "\'"]
 # TODO: make general download function
 # TODO: check if video and audio have already been downloaded
-# TODO: make faster
+# TODO: make faster (remove downloader visual in terminal)
+
 
 def download_vid(vid_link):
     video = YouTube(vid_link, use_oauth=True,
-        allow_oauth_cache=True)
+                    allow_oauth_cache=True)
     global vid_title
     vid_title = video.title + '.mp4'
     vid_title = "".join(
@@ -39,8 +41,8 @@ def download_audio(audio_link):
 
 
 def make_new_video(data):
-    download_vid(data.vidLink)
-    download_audio(data.audioLink)
+    download_vid(data['vidLink'])
+    download_audio(data['audioLink'])
     # Input audio file
     audio = AudioFileClip(f'{audio_folder_path}/{audio_title}')
     # Input video file
@@ -48,7 +50,8 @@ def make_new_video(data):
     # adding external audio to video
     final_video = video.set_audio(audio)
     # Extracting final output video
-    final_video.write_videofile("../frontend/src/assets/video/final.mp4", threads=8, fps=24)
+    final_video.write_videofile(
+        "../frontend/src/assets/video/final.mp4", threads=8, fps=24)
 
 
 if __name__ == '__main__':

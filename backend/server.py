@@ -10,7 +10,7 @@ CORS(app)
 def query_example():
     data = json.loads(request.data)
     try:
-        make_new_video()
+        make_new_video(data)
         return jsonify({"message":"success"}),200
     except Exception as e:
         print(e)
