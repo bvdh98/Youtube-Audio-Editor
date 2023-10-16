@@ -6,7 +6,6 @@ import os
 # TODO:handle error when video is age restricted
 # video_link = "https://www.youtube.com/watch?v=_3trjVGVP3k"
 # audio_link = "https://www.youtube.com/watch?v=iRA82xLsb_w"
-# TODO: handle error when assets/video folder isnt created yet
 video_folder_path = "./downloads/videos"
 audio_folder_path = "./downloads/audio"
 vid_title = ''
@@ -51,7 +50,7 @@ def make_new_video(data):
     final_video = video.set_audio(audio)
     # Extracting final output video
     final_video.write_videofile(
-        "../frontend/src/assets/video/final.mp4", threads=8, fps=24)
+        "../frontend/src/video/final.mp4", threads=8, fps=24)
 
 
 if __name__ == '__main__':

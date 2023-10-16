@@ -6,6 +6,10 @@ import SubmitButton from "./SubmitButton";
 const SearchForm = () => {
   const [vidLink, setVidLink] = useState(null)
   const [audioLink, setAudioLink] = useState(null)
+  const [errors, setErrors] = useState({})
+  const validate = (e) => {
+    
+  }
   return (
     <Form>
       <Form.Group className="mb-3">
@@ -19,7 +23,7 @@ const SearchForm = () => {
         </Form.Label>
         <Form.Control placeholder="Audio link" onChange={(e)=>setAudioLink(e.target.value)}/>
       </Form.Group>
-      <SubmitButton audioLink={audioLink} vidLink={vidLink}></SubmitButton>
+      <SubmitButton audioLink={audioLink} vidLink={vidLink} errors={errors} setErrors={setErrors}></SubmitButton>
     </Form>
   );
 };
