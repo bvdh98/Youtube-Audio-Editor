@@ -8,6 +8,7 @@ import SearchForm from "./Components/SearchForm";
 //TODO:prevent null input
 //TODO:disable cra error screen
 //TODO:video not playable error
+//TODO:downloading state doesnt persist between refreshes
 export const statusContext = createContext(null);
 const App = () => {
   const [status, setStatus] = useState(null);
