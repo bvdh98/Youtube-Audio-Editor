@@ -1,6 +1,5 @@
 from pytube import YouTube
 from moviepy.editor import *
-import os
 
 # TODO:make video and audio same length
 # TODO:handle error when video is age restricted

@@ -1,17 +1,31 @@
-from flask import Flask, jsonify, request, json
+from flask import Flask, jsonify, request, json, session
 from downloader import *
 from flask_cors import CORS
 from pytube import exceptions
+import asyncio
+from dotenv import load_dotenv
+import os
 
 # create the Flask app
 app = Flask(__name__)
 CORS(app)
+load_dotenv('.env')
+app.secret_key = os.getenv('SECRET_KEY')
+
+@app.get('/api/downloadstatus')
+def get_status():
+    try:
+        return jsonify({'isDownloading':session['isDownloading']}),200
+    except KeyError:
+        return jsonify({'isDownloading':False})
 
 @app.post('/api/video')
-def query_example():
+async def get_video():
     data = json.loads(request.data)
     try:
-        make_new_video(data)
+        session['isDownloading'] = True
+        await make_new_video(data)
+        session['isDownloading'] = False
         return jsonify({"message":"success"}),200
     except exceptions.RegexMatchError:
         return jsonify({"message":"invalid-link"}),500
