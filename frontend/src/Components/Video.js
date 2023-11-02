@@ -15,9 +15,9 @@ const Video = () => {
     fetchVideo();
   }, []);
   return (
-    <div>
+    <div className="video-container">
       {status === "success" &&
-        <video src={videoSrc} controls width={800} />}
+        <video src={videoSrc} controls/>}
       {status === null && null}
       {status === "downloading" && "downloading..."}
       {status === "invalid-link" && "download failed: please make sure you entered a valid youtube url"}

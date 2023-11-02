@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { createContext, useState, useEffect } from "react";
 import Video from "./Components/Video";
 import SearchForm from "./Components/SearchForm";
+import Row from "react-bootstrap/Row";
 //TODO:handle errors when video download fails
 //TODO:clear form after submit
 //TODO:disable cra error screen
@@ -24,8 +25,12 @@ const App = () => {
   return (
     <div className="App">
       <statusContext.Provider value={{ status, setStatus }}>
-        <SearchForm />
-        <Video />
+        <Row>
+          <div className="col-sm-8" id="content">
+            <SearchForm />
+            <Video />
+          </div>
+        </Row>
       </statusContext.Provider>
     </div>
   );
