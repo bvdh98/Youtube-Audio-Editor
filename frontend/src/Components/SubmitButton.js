@@ -13,6 +13,7 @@ const SubmitButton = ({ form, setErrors, findFormErrors }) => {
     const res = await fetch(endpoint, {
       method: "POST",
       mode: "cors",
+      credentials: 'include',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 'audioLink': form.audioLink, 'vidLink': form.videoLink })
     });

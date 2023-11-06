@@ -15,7 +15,7 @@ const App = () => {
     getData();
   }, []);
   const getData = async () => {
-    const res = await fetch('http://localhost:5000/api/downloadstatus')
+    const res = await fetch('http://localhost:5000/api/downloadstatus',{credentials: 'include'})
     const data = await res.json()
     console.log(data)
     if (data.isDownloading) {
