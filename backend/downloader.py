@@ -1,6 +1,5 @@
 from pytube import YouTube
 from moviepy.editor import *
-import ffmpeg
 import subprocess as sp
 # TODO:make video and audio same length
 # video_link = "https://www.youtube.com/watch?v=_3trjVGVP3k"
@@ -11,6 +10,7 @@ audio_folder_path = "downloads/audio"
 # audio_title = ''
 # illegal_chars = ["<", ">", ":", "/", "\\", "|", "?", "*", "\"", "\'"]
 # TODO: make general download function
+# TODO: fix potential issue with asking to sign in for age restricted videos at first
 # TODO: check if video and audio have already been downloaded
 
 
