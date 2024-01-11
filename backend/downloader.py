@@ -30,7 +30,7 @@ def download_audio(audio_link):
 
 
 def make_new_video(data):
-    wd = 'C:/Users/benha/OneDrive/Desktop/dev/YouTubeAudioEditor'
+    wd = 'C:/Users/benha/OneDrive/Desktop/dev/YouTube-Audio-Editor'
     output_vid = f"{wd}/frontend/src/video/final.mp4"
     download_vid(data['vidLink'])
     download_audio(data['audioLink'])
