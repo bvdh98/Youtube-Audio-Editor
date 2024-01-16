@@ -11,7 +11,7 @@ audio_folder_path = "downloads/audio"
 # illegal_chars = ["<", ">", ":", "/", "\\", "|", "?", "*", "\"", "\'"]
 # TODO: make general download function
 # TODO: fix potential issue with asking to sign in for age restricted videos at first
-# TODO: check if video and audio have already been downloaded
+# TODO: change links for prod
 
 
 def download_vid(vid_link):
@@ -31,7 +31,7 @@ def download_audio(audio_link):
 
 def make_new_video(data):
     wd = 'C:/Users/benha/OneDrive/Desktop/dev/YouTube-Audio-Editor'
-    output_vid = f"{wd}/frontend/src/video/final.mp4"
+    output_vid = f"{wd}/backend/video/final.mp4"
     download_vid(data['vidLink'])
     download_audio(data['audioLink'])
     video = f'{wd}/backend/{video_folder_path}/video.mp4'

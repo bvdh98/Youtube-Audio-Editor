@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 //TODO:clear form after submit
 //TODO:disable cra error screen
 //TODO:downloading state doesnt persist between refreshes
+//TODO: chnange links for prod
 export const statusContext = createContext(null);
 const App = () => {
   const [status, setStatus] = useState(null);

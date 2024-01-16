@@ -7,10 +7,14 @@ import os
 
 
 # create the Flask app
-app = Flask(__name__)
+app = Flask(__name__,static_url_path='')
 CORS(app,supports_credentials=True)
 load_dotenv('.env')
 app.secret_key = os.getenv('SECRET_KEY')
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 
 @app.get('/api/downloadstatus')
