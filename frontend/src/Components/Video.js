@@ -12,7 +12,7 @@ const Video = () => {
       {status === "downloading" && "downloading..."}
       {status === "invalid-link" && "download failed: please make sure you entered a valid youtube url"}
       {status === "video-exceeds-file-size" && "download failed: the final video exceeds the max file size of 1 GB."}
-      {status === "fail" && "download failed"}
+      {status === "fail" && "Encountered an unexpected error while downloading the video. Please try another video"}
     </div>
   );
 };

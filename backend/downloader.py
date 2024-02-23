@@ -15,11 +15,6 @@ MAX_DOWNLOAD_SIZE = 1073741824
 # TODO: upload to bucket instead of local download. Try using process
 # TODO: check if final vid is too large
 
-
-def clean_up_directory(file_path):
-    if os.path.isfile(file_path):
-        os.remove(file_path)
-
 def download_vid(vid_link):
     video = YouTube(vid_link, use_oauth=True,
                     allow_oauth_cache=True)
