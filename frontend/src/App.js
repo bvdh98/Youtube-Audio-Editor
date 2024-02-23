@@ -8,15 +8,16 @@ import Row from "react-bootstrap/Row";
 //TODO:clear form after submit
 //TODO:disable cra error screen
 //TODO:downloading state doesnt persist between refreshes
-//TODO: chnange links for prod
+//TODO: change links for prod
 export const statusContext = createContext(null);
 const App = () => {
   const [status, setStatus] = useState(null);
+  const [vidLink, setVidLink] = useState(null)
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
-    const res = await fetch('http://localhost:5000/api/downloadstatus',{credentials: 'include'})
+    const res = await fetch('http://localhost:5000/api/downloadstatus', { credentials: 'include' })
     const data = await res.json()
     if (data.isDownloading) {
       setStatus("downloading")
@@ -24,7 +25,7 @@ const App = () => {
   }
   return (
     <div className="App">
-      <statusContext.Provider value={{ status, setStatus }}>
+      <statusContext.Provider value={{status, setStatus,vidLink,setVidLink}}>
         <Row>
           <div className="col-sm-8" id="content">
             <SearchForm />

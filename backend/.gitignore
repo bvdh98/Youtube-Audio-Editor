@@ -4,3 +4,4 @@
 /flask_session
 .env
 /static
+/service-account-key

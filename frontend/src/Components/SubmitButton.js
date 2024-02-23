@@ -5,7 +5,7 @@ import { statusContext } from "../App";
 const endpoint = "http://localhost:5000/api/video";
 
 const SubmitButton = ({ form, setErrors, findFormErrors }) => {
-  const { setStatus } = useContext(statusContext)
+  const { setStatus,setVidLink } = useContext(statusContext)
   const [downloadDisabled, setDownloadDisabled] = useState(false);
   const download = async () => {
     setStatus("downloading");
@@ -19,6 +19,7 @@ const SubmitButton = ({ form, setErrors, findFormErrors }) => {
     });
     const resMessage = await res.json()
     setStatus(resMessage.message);
+    setVidLink(resMessage.vidLink)
     setDownloadDisabled(false);
   };
   const handleSubmit = (e) => {
